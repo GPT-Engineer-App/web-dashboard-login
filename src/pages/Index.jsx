@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Container, Box, VStack, HStack, Text, Input, Button, FormControl, FormLabel, IconButton, Flex, Spacer, Avatar, Menu, MenuButton, MenuList, MenuItem, useToast, Grid, GridItem } from "@chakra-ui/react";
-import { FaUser, FaSignOutAlt, FaCog, FaBell, FaHome, FaUsers, FaChartBar, FaFileAlt } from "react-icons/fa";
+import { Container, Box, VStack, HStack, Text, Input, Button, FormControl, FormLabel, IconButton, Flex, Spacer, Avatar, Menu, MenuButton, MenuList, MenuItem, useToast, Grid, GridItem, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { FaUser, FaSignOutAlt, FaCog, FaBell, FaHome, FaUsers, FaChartBar, FaFileAlt, FaUserAlt, FaLock } from "react-icons/fa";
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -27,11 +27,17 @@ const Login = ({ onLogin }) => {
         <Text fontSize="2xl">Login</Text>
         <FormControl>
           <FormLabel>Username</FormLabel>
-          <Input value={username} onChange={(e) => setUsername(e.target.value)} />
+          <InputGroup>
+            <InputLeftElement pointerEvents="none" children={<FaUserAlt color="gray.300" />} />
+            <Input value={username} onChange={(e) => setUsername(e.target.value)} />
+          </InputGroup>
         </FormControl>
         <FormControl>
           <FormLabel>Password</FormLabel>
-          <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <InputGroup>
+            <InputLeftElement pointerEvents="none" children={<FaLock color="gray.300" />} />
+            <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </InputGroup>
         </FormControl>
         <Button onClick={handleLogin} colorScheme="teal" width="100%">
           Login
