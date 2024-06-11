@@ -48,7 +48,7 @@ const Dashboard = () => {
       <Flex flex="1" mt={4}>
         <SideMenu />
         <Box flex="1" p={4}>
-          <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+          <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={6}>
             <DashboardCard title="Employees" icon={FaUsers} />
             <DashboardCard title="Reports" icon={FaFileAlt} />
             <DashboardCard title="Analytics" icon={FaChartBar} />
@@ -68,6 +68,7 @@ const TopBar = () => {
       <Spacer />
       <HStack spacing={4}>
         <IconButton aria-label="Notifications" icon={<FaBell />} />
+        <IconButton aria-label="Settings" icon={<FaCog />} />
         <Menu>
           <MenuButton as={IconButton} icon={<Avatar size="sm" />} />
           <MenuList>
@@ -83,7 +84,7 @@ const TopBar = () => {
 
 const SideMenu = () => {
   return (
-    <Box as="nav" width="250px" p={4} bg="gray.100">
+    <Box as="nav" width={{ base: "100%", md: "250px" }} p={4} bg="gray.100">
       <VStack align="start" spacing={4}>
         <MenuItem icon={<FaHome />}>Home</MenuItem>
         <MenuItem icon={<FaUsers />}>Employees</MenuItem>
@@ -96,7 +97,7 @@ const SideMenu = () => {
 
 const DashboardCard = ({ title, icon }) => {
   return (
-    <GridItem w="100%" h="200px" bg="white" boxShadow="md" borderRadius="md" p={4}>
+    <GridItem w="100%" h="200px" bg="white" boxShadow="md" borderRadius="md" p={4} _hover={{ boxShadow: "lg" }}>
       <VStack align="start" spacing={4}>
         <HStack>
           <Box as={icon} size="24px" />
